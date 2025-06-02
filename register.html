@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Register Page</title>
+    <style>
+        /* Reset and Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Register.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        header {
+            background-color: rgb(53, 167, 156);
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo h2 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a.active,
+        .navbar a:hover {
+            color: #333;
+        }
+
+        #menu-bar {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Register Form Styling */
+        .register-container {
+            background: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .register-container h1 {
+            color: rgb(53, 167, 156);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .register-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            background: rgb(53, 167, 156);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .register-container button:hover {
+            background: rgb(43, 150, 140);
+        }
+
+        .register-container .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .register-container .login-link a {
+            color: rgb(53, 167, 156);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-container .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                background-color: rgb(53, 167, 156);
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                border-radius: 10px;
+                padding: 10px;
+                z-index: 1000;
+            }
+
+            #menu-bar {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .register-container {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBar = document.getElementById('menu-bar');
+            const navbar = document.querySelector('.navbar');
+            menuBar.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><h2>Wedding Planner</h2></a>
+        <nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="#service">Service</a>
+            <a href="#vendor">Vendors</a>
+            <a href="#invite">Card Design</a>
+            <a href="#contact">Contact Us</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="active">Register</a>
+        </nav>
+        <div id="menu-bar"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <div class="register-container">
+        <h1>Register</h1>
+        <form action="register_process.php" method="POST">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+            <button type="submit">Register</button>
+        
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Login Here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://kit.fontawesome.com/290d4f0eb4.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Page</title>
+    <style>
+        /* Reset and Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?cs=srgb&dl=pexels-cesar-perez-733745.jpg&fm=jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        header {
+            background-color: rgb(53, 167, 156);
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo h2 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a.active,
+        .navbar a:hover {
+            color: #333;
+        }
+
+        #menu-bar {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Login Form Styling */
+        .login-container {
+            background: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .login-container h1 {
+            color: rgb(53, 167, 156);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background: rgb(53, 167, 156);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-container button:hover {
+            background: rgb(43, 150, 140);
+        }
+
+        .login-container .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-container .forgot-password a {
+            color: rgb(53, 167, 156);
+            text-decoration: none;
+        }
+
+        .login-container .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .login-container .register {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-container .register a {
+            color: rgb(53, 167, 156);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-container .register a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                background-color: rgb(53, 167, 156);
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                border-radius: 10px;
+                padding: 10px;
+                z-index: 1000;
+            }
+
+            #menu-bar {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .login-container {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBar = document.getElementById('menu-bar');
+            const navbar = document.querySelector('.navbar');
+            menuBar.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><h2>Wedding Planner</h2></a>
+        <nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="#service">Service</a>
+            <a href="#vendor">Vendors</a>
+            <a href="#invite">Card Design</a>
+            <a href="#contact">Contact Us</a>
+            <a href="login.html" class="active">Login</a>
+        </nav>
+        <div id="menu-bar"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="login_process.php" method="POST">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+        
+            <div class="register">
+                <p>Don't have an account? <a href="register.html">Register Here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://kit.fontawesome.com/290d4f0eb4.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
